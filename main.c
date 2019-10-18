@@ -55,7 +55,9 @@ int main(void)
 	SPI_fifo(SPI_0, SPI_DISABLE_FIFO);// Prueba disable
 	SPI_clock_polarity(SPI_0,SPI_HIGH_POLARITY);
 	SPI_clock_polarity(SPI_0,SPI_LOW_POLARITY);
-
+	SPI_clock_phase(SPI_0,SPI_HIGH_PHASE);
+	SPI_clock_phase(SPI_0,SPI_LOW_PHASE);
+	SPI_baud_rate(SPI_0, SPI_BAUD_RATE_8192);
 //	SPI_init(&g_spi_config); /*! Configuration function for the LCD port*/
 
 //	LCD_nokia_init(); /*! Configuration function for the LCD */

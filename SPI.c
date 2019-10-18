@@ -76,18 +76,45 @@ void SPI_clock_polarity(spi_channel_t channel, spi_polarity_t cpol)/*Exixten dos
 {
 	if (SPI_0 == channel) {
 		if (SPI_LOW_POLARITY == cpol) {
-			SPI0->CTAR[0] &= ~(SPI_CTAR_CPOL_MASK);
+			SPI0->CTAR[SPI_CTAR_0] &= ~(SPI_CTAR_CPOL_MASK);
 		}
 		if (SPI_HIGH_POLARITY == cpol) {
-			SPI0->CTAR[0] |= SPI_CTAR_CPOL_MASK;
+			SPI0->CTAR[SPI_CTAR_0] |= SPI_CTAR_CPOL_MASK;
+		}
+	}
+	if (SPI_1 == channel) {
+			////
+	}
+	if (SPI_2 == channel) {
+			////
+	}
+}
+void SPI_clock_phase(spi_channel_t channel, spi_phase_t cpha){
+	if (SPI_0 == channel) {
+		if (SPI_LOW_PHASE == cpha) {
+		SPI0->CTAR[SPI_CTAR_0] &= ~(SPI_CTAR_CPHA_MASK);
+		}
+		if (SPI_HIGH_PHASE == cpha) {
+				SPI0->CTAR[SPI_CTAR_0] |= SPI_CTAR_CPHA_MASK;
 		}
 	}
 		if (SPI_1 == channel) {
-			////
+				////
 		}
 		if (SPI_2 == channel) {
-			////
+				////
 		}
+}
+SPI_baud_rate(spi_channel_t channel, uint32_t baud_rate){
+	if (SPI_0 == channel) {
+		SPI0->CTAR[SPI_CTAR_0] = baud_rate;
+	}
+	if (SPI_1 == channel) {
+				////
+	}
+	if (SPI_2 == channel) {
+					////
+	}
 }
 
 
