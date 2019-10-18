@@ -53,7 +53,8 @@ int main(void)
 	SPI_set_master(SPI_0, SPI_SLAVE); // Prueba slave//
 	SPI_fifo(SPI_0, SPI_ENABLE_FIFO); // Prueba enable
 	SPI_fifo(SPI_0, SPI_DISABLE_FIFO);// Prueba disable
-
+	SPI_clock_polarity(SPI_0,SPI_HIGH_POLARITY);
+	SPI_clock_polarity(SPI_0,SPI_LOW_POLARITY);
 
 //	SPI_init(&g_spi_config); /*! Configuration function for the LCD port*/
 

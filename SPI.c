@@ -72,6 +72,23 @@ void SPI_fifo(spi_channel_t channel, spi_enable_fifo_t enable_or_disable)
 		////
 	}
 }
+void SPI_clock_polarity(spi_channel_t channel, spi_polarity_t cpol)/*Exixten dos CPOL en master mode pagina 1455 y en slave mode pagina 1459*/
+{
+	if (SPI_0 == channel) {
+		if (SPI_LOW_POLARITY == cpol) {
+			SPI0->CTAR[0] &= ~(SPI_CTAR_CPOL_MASK);
+		}
+		if (SPI_HIGH_POLARITY == cpol) {
+			SPI0->CTAR[0] |= SPI_CTAR_CPOL_MASK;
+		}
+	}
+		if (SPI_1 == channel) {
+			////
+		}
+		if (SPI_2 == channel) {
+			////
+		}
+}
 
 
 
