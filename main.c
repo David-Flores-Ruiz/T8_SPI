@@ -40,6 +40,8 @@ const spi_config_t g_spi_config = {
 /*! This array hold the initial picture that is shown in the LCD. Note that extern should be avoided*/
 extern const uint8_t ITESO[504];
 
+
+
 int main(void)
 {
 	uint8_t string_1[]="ITESO"; /*! String to be printed in the LCD*/
@@ -71,29 +73,29 @@ int main(void)
 
 		LCD_nokia_clear();/*! It clears the information printed in the LCD*/
 		LCD_nokia_bitmap(ITESO); /*! It prints an array that hold an image, in this case is the initial picture*/
-		delay(65000);
+		delay(6500);
 
 		LCD_nokia_clear();
-		delay(65000);
+		delay(6500);
 		LCD_nokia_clear();
 		LCD_nokia_goto_xy(20,0); /*! It establishes the position to print the messages in the LCD*/
 		LCD_nokia_send_string(&string_1[0]); /*! It print a string stored in an array*/
-		delay(65000);
+		delay(6500);
 		LCD_nokia_goto_xy(12,1);
 		LCD_nokia_send_string(string_2); /*! It print a string stored in an array*/
-		delay(65000);
+		delay(6500);
 		LCD_nokia_goto_xy(4,2);
 		LCD_nokia_send_string(string_3); /*! It print a string stored in an array*/
-		delay(65000);
+		delay(6500);
 		LCD_nokia_goto_xy(30,3);
 		LCD_nokia_send_string(string_4); /*! It print a string stored in an array*/
-		delay(65000);
+		delay(6500);
 		LCD_nokia_goto_xy(24,4);
 		LCD_nokia_send_char('2'); /*! It prints a character*/
 		LCD_nokia_send_char('0'); /*! It prints a character*/
 		LCD_nokia_send_char('1'); /*! It prints a character*/
 		LCD_nokia_send_char('9'); /*! It prints a character*/
-		delay(65000);
+		delay(6500);
 	}
 	
 	return 0;
