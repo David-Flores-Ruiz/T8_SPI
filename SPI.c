@@ -107,7 +107,7 @@ void SPI_clock_phase(spi_channel_t channel, spi_phase_t cpha){
 }
 void SPI_baud_rate(spi_channel_t channel, uint32_t baud_rate){
 	if (SPI_0 == channel) {
-		SPI0->CTAR[SPI_CTAR_0] = baud_rate;//Posiblemente nececite OR (|)
+		SPI0->CTAR[SPI_CTAR_0] |= baud_rate;//Posiblemente nececite OR (|)
 	}
 	if (SPI_1 == channel) {
 				////
@@ -134,8 +134,10 @@ void SPI_msb_first(spi_channel_t channel, spi_lsb_or_msb_t msb){
 		}
 }
 void SPI_frame_size(spi_channel_t channel, uint32_t frame_size){
+
 	if (SPI_0 == channel) {
-			SPI0->CTAR[SPI_CTAR_0] |=frame_size;
+		SPI0->CTAR[SPI_CTAR_0] &=~(0x78000000);
+		SPI0->CTAR[SPI_CTAR_0] |=frame_size;
 	}
 	if (SPI_1 == channel) {
 		////
@@ -189,6 +191,7 @@ void SPI_init(const spi_config_t* config_struct){
 	SPI_clock_polarity(config_struct->spi_channel, config_struct->spi_polarity);
 	SPI_frame_size(config_struct->spi_channel, config_struct->spi_frame_size);
 	SPI_clock_phase(config_struct->spi_channel, config_struct->spi_phase);
+	SPI_baud_rate(config_struct->spi_channel, config_struct->spi_baudrate);
 	SPI_msb_first(config_struct->spi_channel, config_struct->spi_lsb_or_msb);
 }
 

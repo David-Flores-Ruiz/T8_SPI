@@ -65,34 +65,34 @@ int main(void)
 	SPI_start_tranference(SPI_0);
 	SPI_stop_tranference(SPI_0);
 */
-//	LCD_nokia_init(); /*! Configuration function for the LCD */
+	LCD_nokia_init(); /*! Configuration function for the LCD */
 
 	for(;;) {
 
-//		LCD_nokia_clear();/*! It clears the information printed in the LCD*/
-//		LCD_nokia_bitmap(ITESO); /*! It prints an array that hold an image, in this case is the initial picture*/
+		LCD_nokia_clear();/*! It clears the information printed in the LCD*/
+		LCD_nokia_bitmap(ITESO); /*! It prints an array that hold an image, in this case is the initial picture*/
 		delay(65000);
 
-//		LCD_nokia_clear();
+		LCD_nokia_clear();
 		delay(65000);
-//		LCD_nokia_clear();
-//		LCD_nokia_goto_xy(20,0); /*! It establishes the position to print the messages in the LCD*/
-//		LCD_nokia_send_string(&string_1[0]); /*! It print a string stored in an array*/
+		LCD_nokia_clear();
+		LCD_nokia_goto_xy(20,0); /*! It establishes the position to print the messages in the LCD*/
+		LCD_nokia_send_string(&string_1[0]); /*! It print a string stored in an array*/
 		delay(65000);
-//		LCD_nokia_goto_xy(12,1);
-//		LCD_nokia_send_string(string_2); /*! It print a string stored in an array*/
+		LCD_nokia_goto_xy(12,1);
+		LCD_nokia_send_string(string_2); /*! It print a string stored in an array*/
 		delay(65000);
-//		LCD_nokia_goto_xy(4,2);
-//		LCD_nokia_send_string(string_3); /*! It print a string stored in an array*/
+		LCD_nokia_goto_xy(4,2);
+		LCD_nokia_send_string(string_3); /*! It print a string stored in an array*/
 		delay(65000);
-//		LCD_nokia_goto_xy(30,3);
-//		LCD_nokia_send_string(string_4); /*! It print a string stored in an array*/
+		LCD_nokia_goto_xy(30,3);
+		LCD_nokia_send_string(string_4); /*! It print a string stored in an array*/
 		delay(65000);
-//		LCD_nokia_goto_xy(24,4);
-//		LCD_nokia_send_char('2'); /*! It prints a character*/
-//		LCD_nokia_send_char('0'); /*! It prints a character*/
-//		LCD_nokia_send_char('1'); /*! It prints a character*/
-//		LCD_nokia_send_char('9'); /*! It prints a character*/
+		LCD_nokia_goto_xy(24,4);
+		LCD_nokia_send_char('2'); /*! It prints a character*/
+		LCD_nokia_send_char('0'); /*! It prints a character*/
+		LCD_nokia_send_char('1'); /*! It prints a character*/
+		LCD_nokia_send_char('9'); /*! It prints a character*/
 		delay(65000);
 	}
 	
