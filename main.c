@@ -46,7 +46,8 @@ int main(void)
 	uint8_t string_2[]="Sistemas"; /*! String to be printed in the LCD*/
 	uint8_t string_3[]="Embebidos I"; /*! String to be printed in the LCD*/
 	uint8_t string_4[]="IE"; /*! String to be printed in the LCD*/
-
+	SPI_init(&g_spi_config); /*! Configuration function for the LCD port*/
+/*
 	SPI_clk(SPI_0);
 	SPI_enable(SPI_0);
 	SPI_set_master(SPI_0, SPI_MASTER);// Prueba master//
@@ -63,8 +64,7 @@ int main(void)
 	SPI_frame_size(SPI_0, SPI_FSIZE_4);
 	SPI_start_tranference(SPI_0);
 	SPI_stop_tranference(SPI_0);
-//	SPI_init(&g_spi_config); /*! Configuration function for the LCD port*/
-
+*/
 //	LCD_nokia_init(); /*! Configuration function for the LCD */
 
 	for(;;) {
