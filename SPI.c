@@ -107,7 +107,7 @@ void SPI_clock_phase(spi_channel_t channel, spi_phase_t cpha){
 }
 SPI_baud_rate(spi_channel_t channel, uint32_t baud_rate){
 	if (SPI_0 == channel) {
-		SPI0->CTAR[SPI_CTAR_0] = baud_rate;
+		SPI0->CTAR[SPI_CTAR_0] = baud_rate;//Posiblemente nececite OR (|)
 	}
 	if (SPI_1 == channel) {
 				////
@@ -115,6 +115,66 @@ SPI_baud_rate(spi_channel_t channel, uint32_t baud_rate){
 	if (SPI_2 == channel) {
 					////
 	}
+}
+/********************Probar Funcion**********************/
+SPI_msb_first(spi_channel_t channel, spi_lsb_or_msb_t msb){
+	if (SPI_0 == channel) {
+		if (SPI_MSB == msb) {
+			SPI0->CTAR[SPI_CTAR_0] &= ~(SPI_CTAR_LSBFE_MASK);
+			}
+		if (SPI_LSM == msb) {
+			SPI0->CTAR[SPI_CTAR_0] |= SPI_CTAR_LSBFE_MASK;
+			}
+	}
+	if (SPI_1 == channel) {
+					////
+	}
+	if (SPI_2 == channel) {
+					////
+		}
+}
+SPI_frame_size(spi_channel_t channel, uint32_t frame_size){
+	if (SPI_0 == channel) {
+			SPI0->CTAR[SPI_CTAR_0] =frame_size>>27;
+	}
+	if (SPI_1 == channel) {
+		////
+	}
+	if (SPI_2 == channel) {
+		////
+		}
+}
+SPI_start_tranference(spi_channel_t channel){
+	if (SPI_0 == channel) {
+		SPI0->MCR &= ~(SPI_MCR_HALT_MASK);
+	}
+	if (SPI_1 == channel) {
+		////
+	}
+	if (SPI_2 == channel) {
+		////
+		}
+}
+void SPI_stop_tranference(spi_channel_t channel){
+if (SPI_0 == channel) {
+		SPI0->MCR |= (SPI_MCR_HALT_MASK);
+	}
+	if (SPI_1 == channel) {
+		////
+	}
+	if (SPI_2 == channel) {
+		////
+		}
+}
+uint8_t SPI_tranference(spi_channel_t channel, uint8_t data){
+	uint8_t recived_data = 0;
+	SPI_start_tranference(channel);
+	SPI0->PUSHR=(data)|SPI_PUSHR_EOQ_MASK;
+	while((SPI0->SR & SPI_SR_TCF_MASK))
+		SPI0->MCR |= (SPI_SR_TCF_MASK);
+	recived_data = SPI0->POPR & 0xFF;
+	return (recived_data);
+
 }
 
 
