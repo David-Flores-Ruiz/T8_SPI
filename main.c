@@ -58,6 +58,11 @@ int main(void)
 	SPI_clock_phase(SPI_0,SPI_HIGH_PHASE);
 	SPI_clock_phase(SPI_0,SPI_LOW_PHASE);
 	SPI_baud_rate(SPI_0, SPI_BAUD_RATE_8192);
+	SPI_msb_first(SPI_0, SPI_LSM);
+	SPI_msb_first(SPI_0, SPI_MSB);
+	SPI_frame_size(SPI_0, SPI_FSIZE_4);
+	SPI_start_tranference(SPI_0);
+	SPI_stop_tranference(SPI_0);
 //	SPI_init(&g_spi_config); /*! Configuration function for the LCD port*/
 
 //	LCD_nokia_init(); /*! Configuration function for the LCD */

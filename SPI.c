@@ -135,7 +135,7 @@ SPI_msb_first(spi_channel_t channel, spi_lsb_or_msb_t msb){
 }
 SPI_frame_size(spi_channel_t channel, uint32_t frame_size){
 	if (SPI_0 == channel) {
-			SPI0->CTAR[SPI_CTAR_0] =frame_size>>27;
+			SPI0->CTAR[SPI_CTAR_0] |=frame_size;
 	}
 	if (SPI_1 == channel) {
 		////
