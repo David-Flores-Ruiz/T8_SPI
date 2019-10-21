@@ -10,4 +10,9 @@
 
 #include "stdint.h"
 
+uint8_t* LCD_nokia_PUMA(void);
+
+uint8_t* LCD_nokia_ITESO(void);
+
+
 #endif /* LCD_NOKIA_IMAGES_H_ */

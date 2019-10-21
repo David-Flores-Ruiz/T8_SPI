@@ -38,8 +38,8 @@ const spi_config_t g_spi_config = {
 							{GPIO_D, bit_0, bit_1, bit_2, bit_3} };
 
 /*! This array hold the initial picture that is shown in the LCD. Note that extern should be avoided*/
-extern const uint8_t ITESO[504];
-
+//extern const uint8_t ITESO[504];
+//extern const uint8_t PUMA [504];
 
 
 int main(void)
@@ -52,10 +52,15 @@ int main(void)
 	SPI_init(&g_spi_config); /*! Configuration function for the LCD port*/
 	LCD_nokia_init(); /*! Configuration function for the LCD */
 
-	for (;;) {
+	uint8_t* ptr_array_PUMA = LCD_nokia_PUMA ();
+	uint8_t* ptr_array_ITESO = LCD_nokia_ITESO();
 
+	for (;;) {
 		LCD_nokia_clear();/*! It clears the information printed in the LCD*/
-		LCD_nokia_bitmap(ITESO); /*! It prints an array that hold an image, in this case is the initial picture*/
+		LCD_nokia_bitmap(ptr_array_PUMA); /*! It prints an array that hold an image, in this case is the initial picture*/
+		delay(3500);
+		LCD_nokia_clear();/*! It clears the information printed in the LCD*/
+		LCD_nokia_bitmap(ptr_array_ITESO); /*! It prints an array that hold an image, in this case is the initial picture*/
 		delay(3500);
 		LCD_nokia_clear();
 		delay(3500);
