@@ -183,7 +183,7 @@ void SPI_stop_tranference(spi_channel_t channel)
 
 uint8_t SPI_tranference(spi_channel_t channel, uint8_t data)
 {
-	SPI0->PUSHR = (data); /* Dato a transmitir = 1 byte, inicia transmision y generacion de reloj */
+	SPI0->PUSHR = (data) | SPI_PUSHR_EOQ_MASK; /* Dato a transmitir = 1 byte, inicia transmision y generacion de reloj */
 	while (0 == (SPI0->SR & SPI_SR_TCF_MASK)) /* Cuando TCF cambia de 0 a 1 la transmision ha terminado correctamente */
 		;
 	SPI0->SR |= SPI_SR_TCF_MASK; /* Se limpia bandera de TCF escribiendo un 1 en el bit_31 */
@@ -200,6 +200,7 @@ void SPI_init(const spi_config_t* config_struct)
 	GPIO_clock_gating(config_struct->spi_gpio_port.gpio_port_name);
 	GPIO_pin_control_register(config_struct->spi_gpio_port.gpio_port_name, config_struct->spi_gpio_port.spi_clk,  &(config_struct->pin_config));
 	GPIO_pin_control_register(config_struct->spi_gpio_port.gpio_port_name, config_struct->spi_gpio_port.spi_sout, &(config_struct->pin_config));
+	GPIO_pin_control_register(config_struct->spi_gpio_port.gpio_port_name, config_struct->spi_gpio_port.spi_sin,  &(config_struct->pin_config)); /* Para leer de memoria */
 	SPI_set_master(config_struct->spi_channel, config_struct->spi_master);
 	SPI_fifo(config_struct->spi_channel, config_struct->spi_enable_fifo);
 	SPI_enable(config_struct->spi_channel);
