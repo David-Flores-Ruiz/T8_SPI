@@ -10,9 +10,26 @@
 
 #include "stdint.h"
 
-#define CS1 0
 #define MAX 504
 
-void memoria_READ_byte(uint8_t data_or_command, uint8_t data, uint8_t dir1, uint8_t dir2, uint8_t dir3 );
+typedef enum {
+	IMG_1,
+	IMG_2,
+	IMG_3,
+	IMG_4,
+	IMG_5,
+} mem_Imagenes_t;
+
+
+void memoria_READ_IMAGEN(const uint8_t bitmap[]);
+
+uint8_t* memoria_IMG1 (void);
+uint8_t* memoria_IMG2 (void);
+uint8_t* memoria_IMG3 (void);
+uint8_t* memoria_IMG4 (void);
+uint8_t* memoria_IMG5 (void);
+
+void memoria_READ_byte(uint8_t data_or_command, uint8_t data, mem_Imagenes_t Image );
+
 
 #endif /* MEMORIA_H_ */

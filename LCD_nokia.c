@@ -120,16 +120,19 @@ void LCD_nokia_init(void)
 	GPIO_pin_control_register(GPIO_D, DATA_OR_CMD_PIN, &lcd_pin_conf);
 	GPIO_pin_control_register(GPIO_D, RESET_PIN, &lcd_pin_conf);
 	GPIO_pin_control_register(GPIO_D, CE, &lcd_pin_conf);
+	GPIO_pin_control_register(GPIO_D, CS_mem, &lcd_pin_conf);
 
 
 	GPIO_set_pin(GPIO_D, DATA_OR_CMD_PIN);
 	GPIO_set_pin(GPIO_D, RESET_PIN);
 	GPIO_set_pin(GPIO_D, CE);
+	GPIO_set_pin(GPIO_D, CS_mem);
+
 
 	GPIO_data_direction_pin(GPIO_D, GPIO_OUTPUT, DATA_OR_CMD_PIN);
 	GPIO_data_direction_pin(GPIO_D, GPIO_OUTPUT, RESET_PIN);
 	GPIO_data_direction_pin(GPIO_D, GPIO_OUTPUT, CE);
-
+	GPIO_data_direction_pin(GPIO_D, GPIO_OUTPUT, CS_mem);
 
 
 	GPIO_clear_pin(GPIO_D, RESET_PIN);
